@@ -1,28 +1,19 @@
-// In App.js in a new project
+import React, { useState } from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
 
-import * as React from 'react';
-import { View, Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-function HomeScreen() {
+const YourApp = () => {
+  const [outPutText, setOutPutText] = useState('Try editing me! 🎉')
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
+    <View style={styles.container}>
+      <Text style={{ fontSize: 45 }}>{outPutText}</Text>
+      <Button title='Change Text' onPress={()=>setOutPutText("You updated me🍟🍟")}/>
     </View>
   );
 }
 
-const Stack = createNativeStackNavigator();
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: "center", alignItems: "center" },
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
+})
 
-export default App;
+export default YourApp;
