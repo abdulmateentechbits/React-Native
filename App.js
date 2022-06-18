@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+// In App.js in a new project
 
-const YourApp = () => {
-  const [outPutText, setOutPutText] = useState('Try editing me! 🎉')
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './components/Home';
+
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text style={{ fontSize: 45 }}>{outPutText}</Text>
-      <Button title='Change Text' onPress={()=>setOutPutText("You updated me🍟🍟")}/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home}
+        options={{
+          headerShown:false
+        }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-
-})
-
-export default YourApp;
+export default App;
